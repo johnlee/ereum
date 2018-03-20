@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Ereum</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+  <span class="text-muted small">Ereum Beta v1.0</span>
+  <div id="divLogin" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <input id="password" type="password" class="form-control" placeholder="Password">
+        <br>
+        <button id="btnLogin" class="btn btn-outline-primary float-right" type="button">Login</button>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+  <div id="divNames" class="container-fluid">
+    <div class="row page-header" style="text-align:right;">
+      <div class="col-md-12">
+        <button class="btn btn-outline-warning btn-lg" id="btnLogout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+        &nbsp;
+        <button class="btn btn-outline-primary btn-lg" id="btnAdd" data-toggle="modal" data-target="#modal">
+          <i class="fas fa-id-card"></i>
+        </button>
+      </div>
+    </div>
+    <!-- filter -->
+    <div class="row page-header">
+      <div class="col-sm-12">
+        <input type="text" id="nameFilter" class="form-control" onkeyup="filterTable()" placeholder="Search names.." title="Type part of name">
+      </div>
+    </div>
+    <!-- table -->
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-hover" id="namesTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Tags</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- modal -->
+  <div class="modal fade" id="modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><label id="fmHeader"></label></h4>
+          <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editform">
+            <div class="row">
+              <div class="col-sm-3 form-group">
+                <label for="fmPhoto">Photo:</label>
+                <br>
+                <span id="fmPhoto">
+                  <i class="fas fa-camera fa-5x"></i>
+                </span>
+              </div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label for="fmName">Name:</label>
+                    <input type="text" class="form-control" id="fmName">
+                    <input type="text" class="form-control" id="fmId" hidden>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label for="fmDate">Date:</label>
+                    <input type="number" class="form-control" id="fmDate">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label for="fmTags">Tags:</label>
+                    <input type="text" class="form-control" id="fmTags">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-hover" id="results_table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Relationship</th>
+                      <th>Tags</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableBody">
+                    <tr>
+                      <td>
+                        <select id="fmRelNames" disabled>
+                          <option value="999">Jane Doe</option>
+                          <option value="999">John Smith</option>
+                          <option value="999">Mike Jones</option>
+                        </select>
+                        <button class="btn btn-outline-info btn-sm float-right" id="btnEditRel" disabled>
+                          <i class="fas fa-pencil-alt"></i>
+                        </button>
+                      </td>
+                      <td>
+                        <input id="fmRelShips" type="text" disabled>
+                      </td>
+                      <td>
+                        <input id="fmRelTags" type="text" disabled>
+                        <button class="btn btn-outline-danger btn-sm float-right" id="btnDeleteRel" disabled>
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <button class="btn btn-outline-primary btn-sm float-right" id="btnAddRel" disabled>
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="btnPhoto" type="button" class="btn btn-secondary" disabled>Photo</button>
+          <button id="btnSave" type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

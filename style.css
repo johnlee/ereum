@@ -1,0 +1,47 @@
+body {
+  margin: 1em 2em 1em 2em;
+}
+
+.page-header {
+  margin-bottom: 1em;
+}
+
+td {
+  vertical-align: top;
+}
+
+@media all and (min-width: 960px) {
+  body {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+}
+
+@media all and (max-width: 959px) and (min-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 599px) and (min-width: 0px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+}
