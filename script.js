@@ -8,7 +8,7 @@ function filterTable() {
     row = table.getElementsByTagName("tr");
     for (i = 0; i < row.length; i++) {
         name = row[i].getElementsByTagName("td")[0];
-        tags = row[i].getElementsByTagName("td")[2];
+        tags = row[i].getElementsByTagName("td")[1];
         if (name) {
             if (name.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 row[i].style.display = "";
@@ -162,7 +162,7 @@ $(document).ready(function () {
                 headers: { 'Authorize': token },
                 success: function (result) {
                     $.each(result, function (i, item) {
-                        var row = `<tr><td>${item.fullname}</td><td>${item.created}</td><td>${item.tags}</td><td>${drawRowButton(item.id)}</td></tr>`;
+                        var row = `<tr><td>${item.fullname}</td><td>${item.tags}</td><td>${drawRowButton(item.id)}</td></tr>`;
                         $("#tableBody").append(row);
                     });
                 },
