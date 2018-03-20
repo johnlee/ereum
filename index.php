@@ -27,7 +27,7 @@ $app->get('/api', function(Request $request, Response $response){
     $headerValueArray = $request->getHeader('Authorize');
     $userid = authenticate($headerValueArray);
     if ($userid != 0) {
-        $sql = "SELECT * FROM Names ORDER BY `created` DESC";
+        $sql = "SELECT * FROM Names ORDER BY `fullname`";
         try{
             $db = new db();
             $db = $db->connect();
